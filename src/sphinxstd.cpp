@@ -1497,6 +1497,7 @@ bool CSphRwlock::Init ( bool bPreferWriter )
 
 // Mac OS X knows nothing about PTHREAD_RWLOCK_PREFER_WRITER_NONRECURSIVE_NP
 #ifndef __APPLE__
+#ifndef __FreeBSD__	
 	while ( bPreferWriter )
 	{
 		bool bOk = ( pthread_rwlockattr_init ( &tAttr )==0 );
@@ -1515,6 +1516,7 @@ bool CSphRwlock::Init ( bool bPreferWriter )
 		pAttr = &tAttr;
 		break;
 	}
+#endif
 #endif
 	m_bInitialized = ( pthread_rwlock_init ( m_pLock, pAttr )==0 );
 
