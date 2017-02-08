@@ -22,6 +22,7 @@
 #include "searchdha.h"
 
 #include <utility>
+#include <netinet/in.h>
 
 
 int				g_iPingInterval		= 0;		// by default ping HA agents every 1 second
